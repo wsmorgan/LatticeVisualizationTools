@@ -2,6 +2,43 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
+def sc_lattice():
+    #for a sc structure
+    #front bottom left corner
+    plt.plot(x1,x1,'o',ms = mst,color = col[0],zorder=6)
+    #front top left corner
+    plt.plot(x1,x2,'o',ms = mst,color = col[0],zorder=6)
+    #front bottom right corner
+    plt.plot(x2,x1,'o',ms = mst,color = col[0],zorder=6)
+    #front top right corner
+    plt.plot(x2,x2,'o',ms = mst,color = col[0],zorder=6)
+    #back top right corner
+    plt.plot(x2+dx,x2+dy,'o',ms = mst,color = col[0],zorder=2)
+    #back bottom left corner
+    plt.plot(dx,dy,'o',ms = mst,color = col[0],zorder=2)
+    #back bottom right corner
+    plt.plot(x2+dx,dy,'o',ms = mst,color = col[0],zorder=2)
+    #back top left coner
+    plt.plot(dx,x2+dy,'o',ms = mst,color = col[0],zorder=2)
+    
+    #connecting lines for front fac
+    plt.plot((x1,x1),(x1,x2),color='k',lw = lwt,zorder=5)
+    plt.plot((x1,x2),(x1,x1),color='k',lw = lwt,zorder=5)
+    plt.plot((x2,x2),(x1,x2),color='k',lw = lwt,zorder=5)
+    plt.plot((x1,x2),(x2,x2),color='k',lw = lwt,zorder=5)
+
+    #connecting lines for sides
+    plt.plot((x1,dx),(x1,dy),color='k',lw = lwt,zorder=1)
+    plt.plot((x2,x2+dx),(x1,dy),color='k',lw = lwt,zorder=1)
+    plt.plot((x1,dx),(x2,x2+dy),color='k',lw = lwt,zorder=1)
+    plt.plot((x2,x2+dx),(x2,x2+dy),color='k',lw = lwt,zorder=1)
+    
+    #connecting lines for back
+    plt.plot((dx,dx),(dy,x2+dy),color='k',lw = lwt,zorder=1)
+    plt.plot((dx,x2+dx),(dy,dy),color='k',lw = lwt,zorder=1)
+    plt.plot((x2+dx,x2+dx),(dy,x2+dy),color='k',lw = lwt,zorder=1)
+    plt.plot((dx,x2+dx),(x2+dy,x2+dy),color='k',lw = lwt,zorder=1)
+
 
 """
 This program makes unit cells for a periodic lattice. It can make
@@ -15,7 +52,7 @@ col =[]
 
 #read in the user input and convert it to the colors to be used.
 for arg in sys.argv:
-    if len(sys.argv)<=5 and len(sys.argv)>1 and len(sys.argv)!=4:        
+    if len(sys.argv)<=7 and len(sys.argv)>1 and len(sys.argv)!=4 and len(sys.argv)!=6:        
         if arg=="structures.py":
             cal = []
         elif arg=="1":
@@ -26,6 +63,10 @@ for arg in sys.argv:
             col.append("#33CC33")
         elif arg=="4":
             col.append("#FFFF00")
+        elif arg == 5:
+            col.append('m')
+        elif arg == 6:
+            col.append('k')
         else:
             print("Error in passed in argument. Please list integer numbers between 1 and 4 with spaces between each integer. 1=blue, 2=red, 3=green, 4=yellow.")
             exit()
@@ -49,43 +90,9 @@ dx = -a*.2
 x2 = x1+a
 dy = a*.4
 
-#for a sc structure
-#front bottom left corner
-plt.plot(x1,x1,'o',ms = mst,color = col[0],zorder=6)
-#front top left corner
-plt.plot(x1,x2,'o',ms = mst,color = col[0],zorder=6)
-#front bottom right corner
-plt.plot(x2,x1,'o',ms = mst,color = col[0],zorder=6)
-#front top right corner
-plt.plot(x2,x2,'o',ms = mst,color = col[0],zorder=6)
-#back top right corner
-plt.plot(x2+dx,x2+dy,'o',ms = mst,color = col[0],zorder=2)
-#back bottom left corner
-plt.plot(dx,dy,'o',ms = mst,color = col[0],zorder=2)
-#back bottom right corner
-plt.plot(x2+dx,dy,'o',ms = mst,color = col[0],zorder=2)
-#back top left coner
-plt.plot(dx,x2+dy,'o',ms = mst,color = col[0],zorder=2)
-
-#connecting lines for front fac
-plt.plot((x1,x1),(x1,x2),color='k',lw = lwt,zorder=5)
-plt.plot((x1,x2),(x1,x1),color='k',lw = lwt,zorder=5)
-plt.plot((x2,x2),(x1,x2),color='k',lw = lwt,zorder=5)
-plt.plot((x1,x2),(x2,x2),color='k',lw = lwt,zorder=5)
-
-#connecting lines for sides
-plt.plot((x1,dx),(x1,dy),color='k',lw = lwt,zorder=1)
-plt.plot((x2,x2+dx),(x1,dy),color='k',lw = lwt,zorder=1)
-plt.plot((x1,dx),(x2,x2+dy),color='k',lw = lwt,zorder=1)
-plt.plot((x2,x2+dx),(x2,x2+dy),color='k',lw = lwt,zorder=1)
-
-#connecting lines for back
-plt.plot((dx,dx),(dy,x2+dy),color='k',lw = lwt,zorder=1)
-plt.plot((dx,x2+dx),(dy,dy),color='k',lw = lwt,zorder=1)
-plt.plot((x2+dx,x2+dx),(dy,x2+dy),color='k',lw = lwt,zorder=1)
-plt.plot((dx,x2+dx),(x2+dy,x2+dy),color='k',lw = lwt,zorder=1)
-
+    
 if len(col)==1:
+    sc_lattice()
     #plotting instructions
     plt.xlim(dx*2,a+dy*2)
     plt.ylim(dx,a+dy*2)
@@ -94,6 +101,7 @@ if len(col)==1:
     fig.savefig('sc.pdf', transparent = True)
 
 elif len(col)==2:
+    sc_lattice()
     #add atom for bcc at body center
     plt.plot((x2+dx)/2,(x2+dy)/2,'o',ms = mst,color = col[1],zorder = 4)
     #add lines to body center
@@ -110,6 +118,7 @@ elif len(col)==2:
     fig.savefig('bcc.pdf', transparent = True)
 
 elif len(col)==4:
+    sc_lattice()
     #add atoms for fcc
     #atom at center of front surface
     plt.plot(x2*.5,x2*.5,'o',ms = mst,color = col[1],zorder = 4)
@@ -141,6 +150,45 @@ elif len(col)==4:
     #plotting instructions
     plt.xlim(dx*2,a+dy*2)
     plt.ylim(dx,a+dy*2)
+    plt.axis('off')
+    plt.show()
+    fig.savefig('fcc.pdf', transparent = True)
+
+#instructions for hcp lattice
+elif len(col) == 6:
+    x1 = 0
+    x2 = 0
+    x3 = 0
+    a = 6
+    c = 2*a
+    #atom at center of bottom of hexegon
+    plt.plot(x1,x1,'o',ms = mst,color = col[1],zorder = 4)
+    #atoms to right and to left of the central bottom atom
+    plt.plot(-a,x1,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(a,x1,'o',ms = mst,color = col[2],zorder = 4)
+    #atoms forming back spokes of the hexegan
+    plt.plot(-a/2,a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(a/2,a/3,'o',ms = mst,color = col[2],zorder = 4)
+    #atoms forming front spokes of the hexegan
+    plt.plot(-a/2,-a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(a/2,-a/3,'o',ms = mst,color = col[2],zorder = 4)
+
+    
+    #atom at center of top of hexegon
+    plt.plot(x1,c,'o',ms = mst,color = col[1],zorder = 4)
+    #atoms to right and to left of the central top atom
+    plt.plot(x1-a,c,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(x1+a,c,'o',ms = mst,color = col[2],zorder = 4)
+    #atoms forming back spokes of the hexegan
+    plt.plot(-a/2,c+a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(a/2,c+a/3,'o',ms = mst,color = col[2],zorder = 4)
+    #atoms forming front spokes of the hexegan
+    plt.plot(-a/2,c-a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(a/2,c-a/3,'o',ms = mst,color = col[2],zorder = 4)
+
+
+    plt.xlim(-2*a,2*a)
+    plt.ylim(-3.5,c+3.5)
     plt.axis('off')
     plt.show()
     fig.savefig('fcc.pdf', transparent = True)
