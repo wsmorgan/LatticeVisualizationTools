@@ -63,10 +63,10 @@ for arg in sys.argv:
             col.append("#33CC33")
         elif arg=="4":
             col.append("#FFFF00")
-        elif arg == 5:
-            col.append('m')
-        elif arg == 6:
-            col.append('k')
+        elif arg == "5":
+            col.append('#FA8072')
+        elif arg == "6":
+            col.append('#8B4513')
         else:
             print("Error in passed in argument. Please list integer numbers between 1 and 4 with spaces between each integer. 1=blue, 2=red, 3=green, 4=yellow.")
             exit()
@@ -162,29 +162,59 @@ elif len(col) == 6:
     a = 6
     c = 2*a
     #atom at center of bottom of hexegon
-    plt.plot(x1,x1,'o',ms = mst,color = col[1],zorder = 4)
+    plt.plot(x1-1,x1,'o',ms = mst,color = col[0],zorder = 4)
     #atoms to right and to left of the central bottom atom
-    plt.plot(-a,x1,'o',ms = mst,color = col[2],zorder = 4)
-    plt.plot(a,x1,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(-a-1,x1,'o',ms = mst,color = col[1],zorder = 6)
+    plt.plot(a-1,x1,'o',ms = mst,color = col[2],zorder = 6)
     #atoms forming back spokes of the hexegan
-    plt.plot(-a/2,a/3,'o',ms = mst,color = col[2],zorder = 4)
-    plt.plot(a/2,a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(-a/2-2,a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(a/2-2,a/3,'o',ms = mst,color = col[1],zorder = 4)
     #atoms forming front spokes of the hexegan
-    plt.plot(-a/2,-a/3,'o',ms = mst,color = col[2],zorder = 4)
-    plt.plot(a/2,-a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(-a/2,-a/3,'o',ms = mst,color = col[2],zorder = 6)
+    plt.plot(a/2,-a/3,'o',ms = mst,color = col[1],zorder = 6)
 
     
     #atom at center of top of hexegon
-    plt.plot(x1,c,'o',ms = mst,color = col[1],zorder = 4)
+    plt.plot(x1-1,c,'o',ms = mst,color = col[0],zorder = 4)
     #atoms to right and to left of the central top atom
-    plt.plot(x1-a,c,'o',ms = mst,color = col[2],zorder = 4)
-    plt.plot(x1+a,c,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(x1-a-1,c,'o',ms = mst,color = col[1],zorder = 6)
+    plt.plot(x1+a-1,c,'o',ms = mst,color = col[2],zorder = 6)
     #atoms forming back spokes of the hexegan
-    plt.plot(-a/2,c+a/3,'o',ms = mst,color = col[2],zorder = 4)
-    plt.plot(a/2,c+a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(-a/2-2,c+a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(a/2-2,c+a/3,'o',ms = mst,color = col[1],zorder = 4)
     #atoms forming front spokes of the hexegan
-    plt.plot(-a/2,c-a/3,'o',ms = mst,color = col[2],zorder = 4)
-    plt.plot(a/2,c-a/3,'o',ms = mst,color = col[2],zorder = 4)
+    plt.plot(-a/2,c-a/3,'o',ms = mst,color = col[2],zorder = 6)
+    plt.plot(a/2,c-a/3,'o',ms = mst,color = col[1],zorder = 6)
+
+    #central atoms
+    plt.plot(x1-.1,c/2-a/6,'o',ms = mst,color = col[3],zorder = 4)
+    plt.plot(a/2-1.5,c/2+a/6,'o',ms = mst,color = col[4],zorder = 4)
+    plt.plot(-a/2-1.5,c/2+a/6,'o',ms = mst,color = col[5],zorder = 4)
+
+    #draw the lines that connect the hcp atoms.
+    plt.plot((-a/2,-a/2),(-a/3,c-a/3),color='k',lw = lwt,zorder=5)
+    plt.plot((a/2,a/2),(-a/3,c-a/3),color='k',lw = lwt,zorder=5)
+    plt.plot((a/2,-a/2),(c-a/3,c-a/3),color='k',lw = lwt,zorder=5)
+    plt.plot((a/2,-a/2),(-a/3,-a/3),color='k',lw = lwt,zorder=5)
+    plt.plot((a/2,a-1),(-a/3,x1),color='k',lw = lwt,zorder=5)
+    plt.plot((-a/2,-a-1),(-a/3,x1),color='k',lw = lwt,zorder=5)
+    plt.plot((a/2,a-1),(c-a/3,c),color='k',lw = lwt,zorder=5)
+    plt.plot((-a/2,-a-1),(c-a/3,c),color='k',lw = lwt,zorder=5)
+    plt.plot((a/2-2,a-1),(c+a/3,c),color='k',lw = lwt,zorder=3)
+    plt.plot((-a/2-2,-a-1),(c+a/3,c),color='k',lw = lwt,zorder=3)
+    plt.plot((a/2-2,a-1),(a/3,x1),color='k',lw = lwt,zorder=3)
+    plt.plot((-a/2-2,-a-1),(a/3,x1),color='k',lw = lwt,zorder=3)
+    plt.plot((a/2-2,-a/2-2),(c+a/3,c+a/3),color='k',lw = lwt,zorder=3)
+    plt.plot((a/2-2,-a/2-2),(a/3,a/3),color='k',lw = lwt,zorder=3)
+    plt.plot((a-1,a-1),(x1,c),color='k',lw = lwt,zorder=3)
+    plt.plot((-a-1,-a-1),(x1,c),color='k',lw = lwt,zorder=3)
+    plt.plot((a/2-2,a/2-2),(a/3,c+a/3),color='k',lw = lwt,zorder=2)
+    plt.plot((-a/2-2,-a/2-2),(a/3,c+a/3),color='k',lw = lwt,zorder=2)
+    # plt.plot((x1-.5,-a/2-1.5),(c/2-a/6,c/2+a/6),color='k',lw = lwt,zorder=3)
+    # plt.plot((x1-.5,a/2-1.5),(c/2-a/6,c/2+a/6),color='k',lw = lwt,zorder=3)
+    # plt.plot((-a/2-1.5,a/2-1.5),(c/2+a/6,c/2+a/6),color='k',lw = lwt,zorder=3)
+    
+
 
 
     plt.xlim(-2*a,2*a)
