@@ -95,7 +95,7 @@ def _parse_args():
     
     parser.add_argument('-examples', help='See details on how to use program.',
                         action='store_true')
-    parser.add_argument('-colors',nargs='+',help='The list of colors to be entered.')
+    parser.add_argument('colors',nargs='+',help='The list of colors to be entered.')
 
     args = parser.parse_args()
     if args.examples:
