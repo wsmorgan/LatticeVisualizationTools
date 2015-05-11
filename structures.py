@@ -37,9 +37,9 @@ def examples():
                  " or less will produce a different cell. Differenc arrangements of the 6"
                  " numbers will alternate the colors."))]
     required = ("REQUIRED: A list of 1, 2, 4, or 6 number ranging form 1 to 6 with spaces and no"
-                "commas between them.")
+                " commas between them.")
     output = ("RETURNS: Creates a pdf of the desired cell. It will have the name of the created"
-              "cell, i. e. sc.pdf, bcc.pdf, fcc.pdf, hcp.pdf.")
+              " cell, i. e. sc.pdf, bcc.pdf, fcc.pdf, hcp.pdf.")
     outputfmt =('.pdf')
     details = ('')
     
@@ -95,7 +95,7 @@ def _parse_args():
     
     parser.add_argument('-examples', help='See details on how to use program.',
                         action='store_true')
-    parser.add_argument('colors',nargs='+',help='The list of colors to be entered.')
+    parser.add_argument('-colors',nargs='+',help='The list of colors to be entered.')
 
     args = parser.parse_args()
     if args.examples:
@@ -185,12 +185,12 @@ def main():
                 col.append('#8B4513')
             else:
                 err("The color you entered isn't valid. Please list integer numbers"
-                    "between 1 and 4 with spaces between each integer. 1=blue, 2=red,"
-                    "3=green, 4=yellow, 5=salmon, 6=brown.")
+                    " between 1 and 4 with spaces between each integer. 1=blue, 2=red,"
+                    " 3=green, 4=yellow, 5=salmon, 6=brown.")
                 exit()
         else:
             err("The number of arguments passed does not match a sc, bcc, or fcc"
-                "cell. Pleas list 1(sc), 2(bcc) or 4(fcc) integers after calling tho progrom.")
+                " cell. Pleas list 1(sc), 2(bcc) or 4(fcc) integers after calling tho progrom.")
             exit()
 
     #length of the lattice vector a.
