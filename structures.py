@@ -10,27 +10,27 @@ def examples():
                " body centered cubic(bcc), face centered cubic(fcc), and hexagonal"
                " close packed(hcp) structures.")
     contents =[(("Create visual of sc cell."),
-                ("structures -colors 1"),
+                ("python structures.py -colors 1"),
                 ("Please note that any number between 1 and 6 may be entered and that"
                  " the number entered will correspond to the color that will be used"
                  " to make the sc unit cell. Use only 1 number for the sc case, more" 
                  " will produce a different cell.")),
                (("Create visual of bcc cell."),
-                ("structures -colors 1 2"),
+                ("python structures.py -colors 1 2"),
                 ("Please note that any number between 1 and 6 may be entered and that"
                  " the number entered will correspond to the color that will be used"
                  " to make the bcc unit cell. Use only 2 numbers for the bcc case, more"
                  " or less will produce a different cell. Different arrangements of the 2"
                  " numbers will alternate the colors.")),
                (("Create visual of fcc cell."),
-                ("structures -colors 1 2 3 4"),
+                ("python structures.py -colors 1 2 3 4"),
                 ("Please note that any number between 1 and 6 may be entered and that"
                  " the number entered will correspond to the color that will be used"
                  " to make the fcc unit cell. Use only 4 numbers for the bcc case, more"
                  " or less will produce a different cell. Different arrangements of the 4"
                   " numbers will alternate the colors.")),
                (("Create visual of hcp cell."),
-                ("structures -colors 1 2 3 4 5 6"),
+                ("python structures.py -colors 1 2 3 4 5 6"),
                 ("Please note that any number between 1 and 6 may be entered and that"
                  " the number entered will correspond to the color that will be used"
                  " to make the bcc unit cell. Use only 6 numbers for the hcp case, more"
