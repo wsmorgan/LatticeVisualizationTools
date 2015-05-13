@@ -27,6 +27,26 @@ For an fcc cell with all the same atoms I would type:
 python structures.py -colors 1 1 1 1
 ```
 
+## Sample Images
+
+Here are some sample images that structures.py produces.
+
+Simple Cubic:
+
+![SC cell](../master/docs/sc.pdf "sc cell sample")
+
+Body Centered Cubic:
+
+![BCC cell](../master/docs/bcc.pdf "bcc cell sample")
+
+Face Centered Cubic:
+
+![FCC cell](../master/docs/fcc.pdf "fcc cell sample")
+
+Hexagonal Close Packed:
+
+![HCP cell](../master/docs/hcp.pdf "hcp cell sample")
+
 The list of arguments are numbers form 1 to 6. For further examples use:
 ```
 python structures.py -examples
