@@ -1,0 +1,23 @@
+# Lattice vectors go here, ie a1, a2, a3:
+#examples, fcc:
+# 0.5 0 0.5
+# 0.5 0.5 0
+# 0 0.5 0.5
+# sc
+# 1 0 0
+# 0 1 0
+# 0 0 1
+#bcc:
+
+0.5 0.5 -0.5
+0.5 -0.5 0.5
+-0.5 0.5 0.5
+
+#Miller indices go here, ie (hkl), with spaces and no parentheses:
+# Examlpe: (100) plane would be 1 0 0, (110) plane would be 1 1 0 and
+# so forth
+
+1 1 1
+#Number of surfaces for plot or poscar:
+
+5
